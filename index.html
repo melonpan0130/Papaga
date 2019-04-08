@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <script src="index.js"></script>
+    <script>
+        $(function() {
+            $drop = $(".dropdown");
+            $drop.on("click", function() {
+                $drop.find(".dropdown-content").toggleClass("openContent");
+                $drop.find(".dropdown-content>div").toggleClass("openContent-div");
+            });
+
+            $drop2 = $(".dropdown2");
+            $drop2.on("click", function() {
+                $drop2.find(".dropdown-content").toggleClass("openContent");
+                $drop2.find(".dropdown-content>div").toggleClass("openContent-div");
+            });
+
+            $("#Dec1").on("mouseover", function(){
+                $("#Dec1").css("color", "rgb(244, 177, 131)");
+                $("#Dec1+div").css("background-image", "url('img/arrow2.png')");
+            }).on("mouseout", function() {
+                $("#Dec1").css("color", "black");
+                $("#Dec1+div").css("background-image", "url('img/arrow.png')");
+            });
+
+            $("#Dec2").on("mouseover", function(){
+                $("#Dec2").css("color", "rgb(244, 177, 131)");
+                $("#Dec2+div").css("background-image", "url('img/arrow2.png')");
+            }).on("mouseout", function() {
+                $("#Dec2").css("color", "black");
+                $("#Dec2+div").css("background-image", "url('img/arrow.png')");
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <header>
+        <img src="img/title.png">
+        <p>암호 번역</p>
+        <ul>
+            <li><img src="img/setup1.png"></li>
+            <li><img src="img/star1.png"></li>
+            <li><img src="img/popup1.png"></li>
+        </ul>
+    </header>
+    <div class="keyFrame">
+        <label for="key">가상키</label>
+        <input id="key" placeholder="가상키">
+        <div id="reset" onclick="reset()">초기화 하기</div>
+    </div>
+    <div id="main">
+        <div id="eng">
+            <div class="title"> <!-- title -->
+                <div class="dropdown">
+                    <p id="Dec1">평문</p><div></div>
+                    <div class="dropdown-content">
+                        <div onclick="selectLang('Dec1', 2)">평문</div>
+                        <div onclick="selectLang('Dec1', 1)">암호문</div>
+                    </div>
+                </div>
+                <div class="translateBtn" onclick="selectLang('Dec1', lang_status)"></div>
+            </div>
+            <div class="Content">
+                <textarea id="str" placeholder="내용을 입력해 주세요."></textarea>
+            </div>
+            <div>
+                <div id="EncButton" onclick="BtnClicked()">암호화하기</div>
+            </div>
+        </div>
+        <div id="kor">
+            <div class="title">
+                <div class="dropdown2">
+                    <p id="Dec2">암호문</p><div></div>
+                    <div class="dropdown-content">
+                        <div onclick="selectLang('Dec2', 2)">평문</div>
+                        <div onclick="selectLang('Dec2', 1)">암호문</div>
+                    </div>
+                </div>
+            </div>
+            <div class="Content">
+                <div id="result"></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
